@@ -45,13 +45,18 @@ public class DAOTelefoneRepository {
 		return retorno;
 	}
 	
+	
 	public void gravaTelefone(ModelTelefone modelTelefone) throws Exception{
 		String sql = "INSERT INTO telefone (numero, usuario_pai_id, usuario_cad_id) VALUES (?, ?, ?)";
 
+		
+		
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, modelTelefone.getNumero());
 		preparedStatement.setLong(2, modelTelefone.getUsuario_pai_id().getId());
 		preparedStatement.setLong(3, modelTelefone.getUsuario_cad_id().getId());
+		
+		System.out.println("insert into telefone ( numero >  " + modelTelefone.getNumero());
 		
 		preparedStatement.execute();
 		
@@ -69,6 +74,22 @@ public class DAOTelefoneRepository {
 		preparedStatement.executeUpdate();
 		
 		connection.commit();
+	}
+	
+	public boolean existeFone(String fone, Long idUser) throws Exception{
+		String sql = "select count(1) > 0 as existe from telefone where usuario_pai_id = ? and numero = ?";
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(sql); 
+		
+		preparedStatement.setLong(1, idUser);
+		preparedStatement.setString(2, fone);
+		
+		ResultSet resultSet = preparedStatement.executeQuery();
+		resultSet.next();
+		
+		
+		
+		return resultSet.getBoolean("existe");
 	}
 
 }

@@ -81,6 +81,14 @@
 																	class="form-bar"></span> <label class="float-label">Nome</label>
 															</div>
 															<div class="form-group form-default form-static-label">
+																<input type="date" name="dataNascimento" id="dataNascimento" class="form-control" required="required" value="${modelLogin.dataNascimento}"> 
+																<span class="form-bar"></span> <label class="float-label">Dat. Nascimento</label>
+															</div>
+															<div class="form-group form-default form-static-label">
+																<input type="text" name="rendamensal" id="rendamensal" class="form-control" required="required" value="${modelLogin.rendamensal}"> 
+																<span class="form-bar"></span> <label class="float-label">Renda Mensal</label>
+															</div>
+															<div class="form-group form-default form-static-label">
 																<input type="email" name="email" id="email"
 																	class="form-control" required="required"
 																	autocomplete="off" value="${modelLogin.email}">
@@ -351,6 +359,27 @@
 
 
 	<script type="text/javascript">
+	
+	
+	$("#rendamensal").maskMoney({prefix:'R$ ', allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
+	
+	$("#rendamensal").focus();
+	
+	
+	
+	
+	$(function() {
+		$("#dataNascimento").datePicker({
+			dateFormat: 'yyyy-mm-dd',
+			dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sabado'],
+			dayNamesMin: ['D','S','T','Q','Q','S','S'],
+			dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+			monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+			monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+			nextText: 'Proximo',
+			prevText: 'Anterior'
+		});
+	});
 	
 	$("#numero").keypress(function (event) {
 		return /\d/.test(String.fromCharCode(event.keyCode));

@@ -7,7 +7,7 @@
 <title>Tela que exibe erros</title>
 </head>
 <body>
-	<h1>Mensagem de erro, entre em contato com a qeuipe de suporte do sitema</h1>
+	<h1>Mensagem de erro, entre em contato com a equipe de suporte do sistema.</h1>
 	
 <%
 	out.print(request.getAttribute("msg"));
